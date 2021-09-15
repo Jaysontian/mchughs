@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+    <title>McHughs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/css/glide.core.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/css/glide.theme.css" rel="stylesheet">
+    <base target="_blank">
+</head>
+<body>
+    <main>
+        <nav>
+            <div id='logo'>
+                <img src="assets/whitelogo.png">
+                <h1>McHugh's House</h1>
+            </div>
+            <div id='tabs'>
+                <a onclick='showtab("updates")' id='updates' class='active'>Updates</a>
+                <a onclick='showtab("breakfast")' id='breakfast'>Breakfast</a>
+                <a onclick='showtab("clothes")' id='clothes'>Clothes</a>
+                <a onclick='showtab("team")' id='team'>Team</a>
+            </div>
+        </nav>
+    
+        <br>
+        <div class='page carousel'>
+            <div class="glide multi1">
+                <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide"><img src='./assets/1.JPG'></li>
+                    <li class="glide__slide"><img src='./assets/2.JPEG'></li>
+                    <li class="glide__slide"><img src='./assets/3.JPEG'></li>
+                    <li class="glide__slide"><img src='./assets/4.JPG'></li>
+                    <li class="glide__slide"><img src='./assets/5.png'></li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <div class='page updates'>
+            <!--<div class='update'>
+                <h1>Welcome Back!</h1>
+                <time>September 10th</time>
+                <div>Hello and welcome back guys!</div>
+            </div>-->
+        </div>
+        <div class='page breakfast'>
+            <h1>House Breakfast</h1>
+            <p>Vote on what you want for the next house breakfast here. More info to come.</p>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScNcSbhY_3kVlr4BGeCl-86_ocqpzVY9Ylh_lELvnx8DFhoLA/viewform?embedded=true" width="640" height="700" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+        <div class='page clothes'>
+            <h1>House Clothing</h1>
+            <p>Designs will be released next week. We're thinking of having three options: quarter zips, t-shirts, and hoodies.</p>
+        </div>
+        <div class='page team'>
+            <h1>Leadership Team</h1>
+            <div id='team-con'>
+                <div>
+                    <img src='/assets/hill.jpeg'>
+                    <h2>Mr. Hill</h2>
+                    <p>Senior House Advisor</p>
+                </div>
+                <div>
+                    <img src='/assets/jayson.jpg'>
+                    <h2>Jayson Tian</h2>
+                    <p>Head of House</p>
+                </div>
+                <div>
+                    <img src='https://i.stack.imgur.com/y9DpT.jpg'>
+                    <h2>James McGregor</h2>
+                    <p>Prefect</p>
+                </div>
+                <div>
+                    <img src='https://i.stack.imgur.com/y9DpT.jpg'>
+                    <h2>Mack McGregor</h2>
+                    <p>Prefect</p>
+                </div>
+                <div>
+                    <img src='https://i.stack.imgur.com/y9DpT.jpg'>
+                    <h2>Matthew Witz-Tsofin</h2>
+                    <p>Prefect</p>
+                </div>
+                <div>
+                    <img src='https://i.stack.imgur.com/y9DpT.jpg'>
+                    <h2>Jack Kedwell</h2>
+                    <p>Prefect</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div>
+            <h1>McHugh's House</h1>
+            <p><b>@ Upper Canada College</b></p>
+        </div>
+        <div>
+            <p>Follow us on <a href='https://instagram.com/mchughs_house'>Instagram</a></p>
+            <p>Website by Jayson Tian</p>
+        </div>
+    </footer>
+    
+</body>
+
+
+<script src='https://cdn.jsdelivr.net/npm/@glidejs/glide'></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</html>
+
+<script>
+    var glideMulti1 = new Glide('.multi1', {
+        type: 'carousel',
+        autoplay: 3500,
+        perView: 3,
+        gap: 25,
+    });
+    glideMulti1.mount();
+
+    var teadata;
+
+function send2JSON(id){
+    var newdata = [];
+    fetch(`https://docs.google.com/spreadsheets/d/` + id + `/gviz/tq?tqx=out:json`)
+        .then(res => res.text())
+        .then(text => {
+            const json = JSON.parse(text.substr(47).slice(0, -2));
+            console.log(json);
+            (json.table.rows).forEach(row => {
+                var newrow ={};
+                (row.c).forEach((col, index) => {
+                    if (json.table.cols[index].label != ''){
+                        if (col != null){
+                            newrow[json.table.cols[index].label] = col.v
+                        } else {
+                            newrow[json.table.cols[index].label] = null
+                        }
+                    }
+                });
+                (newdata).push(newrow);
+            });
+        }).then(()=>{
+            receive2JSON(newdata);
+        });
+}
+
+    send2JSON('15jsCPmONa7iudIHEC3Nxoy38Fbp-O7N2nU1YhyvZUd4');
+    function receive2JSON(data){
+        data.forEach(update =>{
+            var con = $('<div class="update">').appendTo('.updates');
+            $('<h1>').text(update.title).appendTo(con);
+            $('<time>').text(update.time).appendTo(con);
+            $('<div>').html(update.info).appendTo(con);
+        })
+    }
+
+    function showtab(tab){
+        $('#tabs a').removeClass('active');
+        $('#'+tab).addClass('active');
+        $('.page').hide();
+        $('.'+tab).show();
+        
+
+        if (tab == 'updates'){
+            $('.carousel').show();
+        }
+    }
+
+    showtab('updates');
+</script>

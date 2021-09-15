@@ -1,0 +1,156 @@
+
+body{
+    font-family:Urbanist;
+    margin:0px;
+}
+main {
+    padding:0px 4%;
+    padding-top: 20px;
+    min-height: 400px;
+}
+.page {
+    text-align: center;
+}
+p{
+    font-size:13pt;
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    color:#006eff;
+    font-weight:bold;
+    text-decoration:none;
+    border-bottom:2px solid #0051ff;
+}
+
+footer {
+    background-color:#9c3c3c;
+    margin-top:100px;
+    display:flex;
+    justify-content: space-between;
+    padding:40px 20%;
+    color:white;
+}
+footer h1{
+    margin-top:0px;
+}
+footer a{
+    color:rgb(64, 249, 255);
+    border-color:rgb(64, 249, 255);
+}
+
+
+
+nav {
+    width:100%;
+    border-radius:5px;
+    background-color:#9c3c3c;
+    display:flex;
+    justify-content: space-between;
+}
+
+#logo{
+    display:flex;
+}
+#logo img{
+    width:70px;
+    height:70px;
+    margin-left:10px;
+}
+
+#logo h1{
+    text-align:center;
+    color:white;
+}
+
+#tabs{
+    float:right;
+    margin-left:auto;
+    width:300px;
+    float:right;
+    display:flex;
+    justify-content: space-around;
+    font-size:12pt;
+    color:white;
+    align-items: center;
+    margin-right:20px;
+}
+
+#tabs a{
+    color:white;
+    border-bottom:none;
+    cursor:pointer;
+}
+#tabs .active{
+    border-bottom: 2px solid white;
+}
+
+
+
+.wrap {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+.glide__slide {
+    line-height: 100px;
+    margin: 0;
+    text-align: center;
+}
+.glide__slide img{
+    object-fit: cover;
+    width:100%;
+    height:300px;
+    border-radius:5px;
+}
+
+.updates{
+    width:60%;
+    max-width:600px;
+    margin:auto;
+}
+
+.update h1{
+    font-size:20pt;
+    font-weight:800;
+    color:#9c3c3c;
+}
+.update time {
+    font-size:13pt;
+    margin-top:-10px;
+}
+.update div {
+    font-size:13pt;
+    margin-top:20px;
+    line-height:25px;
+}
+
+.update{
+    border:3px solid #9c3c3c;
+    border-radius:5px;
+    padding:10px 20px;
+    padding-bottom:25px;
+    height:auto;
+    margin-bottom:30px;
+}
+
+#team-con {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+#team-con div{
+    width:250px;
+    margin:20px 30px;
+}
+
+#team-con img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:5px;
+
+}

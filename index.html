@@ -73,22 +73,22 @@
                     <p>Head of House</p>
                 </div>
                 <div>
-                    <img src='https://i.stack.imgur.com/y9DpT.jpg'>
+                    <img src='/assets/james.JPG'>
                     <h2>James McGregor</h2>
                     <p>Prefect</p>
                 </div>
                 <div>
-                    <img src='https://i.stack.imgur.com/y9DpT.jpg'>
+                    <img src='/assets/mack.jpg'>
                     <h2>Mack McGregor</h2>
                     <p>Prefect</p>
                 </div>
                 <div>
-                    <img src='https://i.stack.imgur.com/y9DpT.jpg'>
+                    <img src='/assets/matt.jpeg'>
                     <h2>Matthew Witz-Tsofin</h2>
                     <p>Prefect</p>
                 </div>
                 <div>
-                    <img src='https://i.stack.imgur.com/y9DpT.jpg'>
+                    <img src='/assets/jack.JPG'>
                     <h2>Jack Kedwell</h2>
                     <p>Prefect</p>
                 </div>
@@ -115,13 +115,6 @@
 </html>
 
 <script>
-    var glideMulti1 = new Glide('.multi1', {
-        type: 'carousel',
-        autoplay: 3500,
-        perView: 3,
-        gap: 25,
-    });
-    glideMulti1.mount();
 
     var teadata;
 
@@ -158,6 +151,28 @@ function send2JSON(id){
             $('<time>').text(update.time).appendTo(con);
             $('<div>').html(update.info).appendTo(con);
         })
+    }
+
+    // Create a media condition that targets viewports at least 768px wide
+    const mediaQuery = window.matchMedia('(max-width: 600px)')
+    // Check if the media query is true
+    if (mediaQuery.matches) {
+        var glideMulti1 = new Glide('.multi1', {
+            type: 'carousel',
+            autoplay: 3500,
+            perView: 1,
+            startAt:1,
+            gap: 25,
+        });
+        glideMulti1.mount();
+    } else {
+        var glideMulti1 = new Glide('.multi1', {
+            type: 'carousel',
+            autoplay: 3500,
+            perView: 3,
+            gap: 25,
+        });
+        glideMulti1.mount();
     }
 
     function showtab(tab){

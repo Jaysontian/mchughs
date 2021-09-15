@@ -154,3 +154,32 @@ nav {
     border-radius:5px;
 
 }
+
+
+@media only screen and (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        height:auto;
+        padding-bottom:20px;
+        justify-content: center;
+    }
+    #logo h1 {
+        display:none;
+    }
+    #logo {
+        margin:auto;
+    }
+    #tabs {
+        margin:auto;
+    }
+    .updates{
+        width:100%;
+    }
+    footer{
+        flex-direction: column;
+        text-align: center;
+    }
+    iframe{
+        width:100%;
+    }
+  }

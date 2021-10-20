@@ -1,5 +1,7 @@
 .update img{
     width:100%;
+    margin-top:10px;
+    border-radius:5px;
 }
 body{
     font-family:Urbanist;

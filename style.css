@@ -237,6 +237,19 @@ nav {
         padding-bottom:20px;
         justify-content: center;
     }
+    .glide__slides {
+        height:400px;
+    }
+
+    .updates {
+        padding:2.5%;
+        width:95%;
+    }
+    .logo-hover{
+        display:none;
+    }
+
+
     #logo h1 {
         display:none;
     }

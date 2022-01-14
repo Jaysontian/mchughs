@@ -21,30 +21,20 @@
             <h1>McHugh's House</h1>
         </div>
         <div id='tabs'>
-            <a href='./' class='active' target='_self'>Updates</a>
+            <a href='./' target='_self'>Updates</a>
             <a href='./food.html' target='_self'>Food</a>
-            <a href='./gallery.html' target='_self'>Gallery</a>
+            <a href='./gallery.html'class='active' target='_self'>Gallery</a>
             <a href='./team.html' id='team' target='_self'>Team</a>
             <a href='https://instagram.com/mchughs_house' ><img src='https://www.edigitalagency.com.au/wp-content/uploads/new-instagram-logo-white-border-icon-png-large.png' style='width:20px;'></a>
         </div>
     </nav>
-    <div>
-        <div class='logo-hover'><img src='assets/whitelogo.png'></div>
-        <div class="glide multi1">
-            <div class="glide__track" data-glide-el="track">
-            <ul class="glide__slides">
-                <li class="glide__slide"><img src='./assets/1.JPG'></li>
-                <li class="glide__slide"><img src='./assets/2.JPEG'></li>
-                <li class="glide__slide"><img src='./assets/3.JPEG'></li>
-                <li class="glide__slide"><img src='./assets/4.JPG'></li>
-                <li class="glide__slide"><img src='./assets/5.png'></li>
-            </ul>
-            </div>
-        </div>
+
+    <br><br>    <br><br>    <br><br><br><br><br><br>
+    <h1 style='margin-left:3.5%;font-weight:800;'>Media Gallery</h1>
+    <div class='loader' style='display:flex;width:100%;'>
+        <img style='width:50px; height:50px; margin:auto;'src='https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif'>
     </div>
-    <br><br>
-    <div class='page updates'>
-        <h2>House Updates</h2> <br>
+     <div class='page gallery'>
         <!--<div class='update'>
             <h1>Welcome Back!</h1>
             <time>September 10th</time>
@@ -65,27 +55,7 @@
 <script src='https://cdn.jsdelivr.net/npm/@glidejs/glide'></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // Create a media condition that targets viewports at least 768px wide
-    const mediaQuery = window.matchMedia('(max-width: 600px)')
-    // Check if the media query is true
-    if (mediaQuery.matches) {
-        var glideMulti1 = new Glide('.multi1', {
-            type: 'carousel',
-            autoplay: 3500,
-            perView: 1,
-            startAt:1,
-            gap: 25,
-        });
-        glideMulti1.mount();
-    } else {
-        var glideMulti1 = new Glide('.multi1', {
-            type: 'carousel',
-            autoplay: 3000,
-            perView: 1,
-            gap: 0,
-        });
-        glideMulti1.mount();
-    }
+
 
     var teadata;
 
@@ -97,32 +67,16 @@ function send2JSON(id){
             const json = JSON.parse(text.substr(47).slice(0, -2));
             console.log(json);
             (json.table.rows).forEach(row => {
-                var newrow ={};
-                (row.c).forEach((col, index) => {
-                    if (json.table.cols[index].label != ''){
-                        if (col != null){
-                            newrow[json.table.cols[index].label] = col.v
-                        } else {
-                            newrow[json.table.cols[index].label] = null
-                        }
-                    }
-                });
-                (newdata).push(newrow);
+                var con = $('<li>').appendTo('.gallery');
+                $('<img>').attr('src', row.c[0].v).appendTo(con);
             });
         }).then(()=>{
-            receive2JSON(newdata);
+            $('.loader').remove();
         });
 }
 
-    send2JSON('15jsCPmONa7iudIHEC3Nxoy38Fbp-O7N2nU1YhyvZUd4');
-    function receive2JSON(data){
-        data.forEach(update =>{
-            var con = $('<div class="update">').appendTo('.updates');
-            $('<h1>').text(update.title).appendTo(con);
-            $('<time>').text(update.time).appendTo(con);
-            $('<div>').html(update.info).appendTo(con);
-        })
-    }
+    send2JSON('1s0jd9EnO_mlhPVPtyiUeDT7THULFPRifEWbGXI0k8CM');
+
 
 </script>
 </html>

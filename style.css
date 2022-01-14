@@ -196,13 +196,13 @@ nav {
 
 
 @media (max-aspect-ratio: 1/1) {
-  li {
+    .gallery li {
     height: 30vh;
   }
 }
 
 @media (max-height: 480px) {
-  li {
+    .gallery li {
     height: 80vh;
   }
 }
@@ -258,9 +258,6 @@ nav {
     }
     #tabs {
         margin:auto;
-    }
-    .updates{
-        width:100%;
     }
     footer{
         flex-direction: column;
